@@ -1,0 +1,13 @@
+[distutils]
+index-servers =
+    pypi
+    internal
+
+[pypi]
+username:pypiusername
+password:pypipassword
+
+[internal]
+repository: http://pypi
+username:jarvis
+password:password

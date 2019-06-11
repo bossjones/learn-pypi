@@ -68,3 +68,15 @@ add-vulture:
 add-eradicate:
 	echo " [run] Find dead Python code"
 	poetry add eradicate
+
+logs:
+	( cd ..; docker-compose logs -f )
+
+stop-manylinux:
+	( cd ..; docker-compose stop manylinux )
+
+up-manylinux:
+	( cd ..; docker-compose up -d manylinux )
+
+restart-manylinux: stop-manylinux up-manylinux
+

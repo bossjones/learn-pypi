@@ -14,5 +14,6 @@ stop-bash:
 up-bash:
 	docker-compose up -d bash
 
+.PHONY: project
 project:
 	poetry new boss_package

@@ -28,3 +28,11 @@ services:
     volumes:
       -  .pypirc:/root/.pypirc:rw
       -  .:/root/dev/app:rw
+  manylinux:
+    container_name: manylinux
+    image: quay.io/pypa/manylinux1_x86_64
+    command: tail -f /dev/null
+    tty: true
+    stdin_open: true
+    volumes:
+      -  .:/root/dev/app:rw

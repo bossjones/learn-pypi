@@ -23,6 +23,7 @@ services:
         - localhost
     image: python:3.7.3-stretch
     command: tail -f /dev/null
+    working_dir: /root/dev/app
     tty: true
     stdin_open: true
     volumes:

@@ -1,5 +1,8 @@
 .PHONY: install build package publish show config version shell check lock add-repository creds-repository prepare deploy wheelhouse
 
+bootstrap:
+	bash travis/bootstrap.sh
+
 install:
 	poetry install
 
@@ -54,12 +57,11 @@ clean: clean-build clean-pyc ## clean build artifacts and python file artifacts
 cli:
 	pickley install tox twine auditwheel pex mkdocs pre-commit pyscaffold pyroma flit hatch
 
-global-install:
+global-install: bootstrap
 	pip3 install tox twine auditwheel pex mkdocs pre-commit pyscaffold pyroma flit hatch
 
 wheelhouse:
-	bash travis/build-wheels-stretch-slim-docker.sh
-	ls wheelhouse
+	bash travis/build-wheels-test.sh
 
 add-vulture:
 	echo " [run] Find dead Python code"
@@ -80,3 +82,12 @@ up-manylinux:
 
 restart-manylinux: stop-manylinux up-manylinux
 
+twine-package:
+	python setup.py sdist bdist_wheel
+
+twine-upload:
+	twine upload --repository-url http://pypi/legacy/ dist/*
+
+keyring:
+	keyring set http://pypi/legacy/ jarvis
+	keyring set http://pypi/legacy/ jarvis

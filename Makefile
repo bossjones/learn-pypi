@@ -17,3 +17,7 @@ up-bash:
 .PHONY: project
 project:
 	poetry new boss_package
+
+.PHONY: logs
+logs:
+	docker-compose logs -f

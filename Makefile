@@ -5,3 +5,11 @@ up:
 .PHONY: docker-enter
 enter:
 	docker-enter
+
+.PHONY: stop-bash
+stop-bash:
+	docker-compose down bash
+
+.PHONY: up-bash
+up-bash:
+	docker-compose up -d bash

@@ -1,6 +1,16 @@
+auth:
+	mkdir auth
+
+packages:
+	mkdir packages
+
 .PHONY: up
-up:
+up: auth packages
 	docker-compose up -d
+
+.PHONY: down
+down:
+	docker-compose down
 
 .PHONY: docker-enter
 enter:

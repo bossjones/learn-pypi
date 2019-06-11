@@ -1,20 +1,20 @@
 ---
 version: '3.7'
 services:
-  pypi:
-    container_name: pypi
-    networks:
-      default:
-        aliases:
-        - localhost
-    image: codekoala/pypi
-    ports:
-    - published: 8080
-      target: 80
-    tty: true
-    stdin_open: true
-    volumes:
-      - ./pypi:/srv/pypi:rw
+  # pypi:
+  #   container_name: pypi
+  #   networks:
+  #     default:
+  #       aliases:
+  #       - localhost
+  #   image: codekoala/pypi
+  #   ports:
+  #   - published: 8080
+  #     target: 80
+  #   tty: true
+  #   stdin_open: true
+  #   volumes:
+  #     - ./pypi:/srv/pypi:rw
   bash:
     container_name: bash
     networks:
@@ -29,16 +29,16 @@ services:
     volumes:
       -  .pypirc:/root/.pypirc:rw
       -  .:/root/dev/app:rw
-  manylinux:
-    container_name: manylinux
-    image: quay.io/pypa/manylinux2010_x86_64
-    environment:
-      PLAT: manylinux2010_x86_64
-    command: tail -f /dev/null
-    tty: true
-    stdin_open: true
-    volumes:
-      -  .:/io:rw
+  # manylinux:
+  #   container_name: manylinux
+  #   image: quay.io/pypa/manylinux2010_x86_64
+  #   environment:
+  #     PLAT: manylinux2010_x86_64
+  #   command: tail -f /dev/null
+  #   tty: true
+  #   stdin_open: true
+  #   volumes:
+  #     -  .:/io:rw
 
   # ######################################################################
   # pypiserver docker-compose examples

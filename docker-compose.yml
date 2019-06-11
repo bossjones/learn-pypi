@@ -1,0 +1,29 @@
+---
+version: '3.7'
+services:
+  pypi:
+    container_name: pypi
+    networks:
+      default:
+        aliases:
+        - localhost
+    image: codekoala/pypi
+    ports:
+    - published: 8080
+      target: 80
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./pypi:/srv/pypi:rw
+  bash:
+    container_name: bash
+    networks:
+      default:
+        aliases:
+        - localhost
+    image: python:3.7.3-stretch
+    command: tail -f /dev/null
+    tty: true
+    stdin_open: true
+    volumes:
+      -  .pypirc:/root/.pypirc:rw

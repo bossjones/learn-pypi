@@ -11,3 +11,8 @@ password:pypipassword
 repository: http://pypi
 username:jarvis
 password:password
+
+[pypiserver]
+repository: http://pypiserver-default:8080
+username:jarvis
+password:password

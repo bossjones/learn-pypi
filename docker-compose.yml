@@ -1,20 +1,20 @@
 ---
 version: '3.7'
 services:
-  # pypi:
-  #   container_name: pypi
-  #   networks:
-  #     default:
-  #       aliases:
-  #       - localhost
-  #   image: codekoala/pypi
-  #   ports:
-  #   - published: 8080
-  #     target: 80
-  #   tty: true
-  #   stdin_open: true
-  #   volumes:
-  #     - ./pypi:/srv/pypi:rw
+  pypi:
+    container_name: pypi
+    networks:
+      default:
+        aliases:
+        - localhost
+    image: codekoala/pypi
+    ports:
+    - published: 8083
+      target: 80
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./pypi:/srv/pypi:rw
   bash:
     container_name: bash
     networks:
@@ -28,7 +28,13 @@ services:
     stdin_open: true
     volumes:
       -  .pypirc:/root/.pypirc:rw
+      -  ./bashrc:/root/.bashrc:rw
       -  .:/root/dev/app:rw
+    depends_on:
+      - pypiserver-default
+      - pypiserver-authenticated
+      - pypiserver-local-packages
+      - pypi
   # manylinux:
   #   container_name: manylinux
   #   image: quay.io/pypa/manylinux2010_x86_64
@@ -40,6 +46,18 @@ services:
   #   volumes:
   #     -  .:/io:rw
 
+  devpi:
+      # networks:
+      #   default:
+      #     aliases:
+      #     - pypiserver
+      image: muccg/devpi
+      environment:
+        - DEVPI_PASSWORD=password
+      volumes:
+        -  ./data:/data:rw
+      ports:
+          - "3141:3141"
   # ######################################################################
   # pypiserver docker-compose examples
   # ######################################################################
@@ -62,6 +80,10 @@ services:
   # ##################################################################
 
   pypiserver-default:
+      # networks:
+      #   default:
+      #     aliases:
+      #     - pypiserver
       image: pypiserver/pypiserver:latest
       ports:
           - "8080:8080"
@@ -80,6 +102,10 @@ services:
   # ##################################################################
 
   pypiserver-authenticated:
+      # networks:
+      #   default:
+      #     aliases:
+      #     - pypiserver-authenticated
       image: pypiserver/pypiserver:latest
       volumes:
           - type: bind
@@ -101,6 +127,10 @@ services:
   # ##################################################################
 
   pypiserver-local-packages:
+      # networks:
+      #   default:
+      #     aliases:
+      #     - pypiserver-local-packages
       image: pypiserver/pypiserver:latest
       volumes:
           - type: bind

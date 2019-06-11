@@ -1,7 +1,10 @@
 .PHONY: install build package publish show config version shell check lock add-repository creds-repository prepare deploy wheelhouse
 
-bootstrap:
+# add-repository creds-repository
+bootstrap: poetry-activate
 	bash travis/bootstrap.sh
+
+setup: add-repository creds-repository
 
 install:
 	poetry install
@@ -12,7 +15,8 @@ build:
 package: build
 
 publish:
-	poetry publish -vvv -r internal -u jarvis -p password --build
+	poetry publish -vvv -r internal -u jarvis -p password --build || true
+	poetry publish -vvv -r pypiserver-default -u jarvis -p password --build || true
 
 show:
 	poetry show
@@ -34,9 +38,11 @@ lock:
 
 add-repository:
 	poetry config repositories.internal http://pypi/simple/
+	poetry config repositories.pypiserver-default http://pypiserver-default:8080/simple/
 
 creds-repository:
 	poetry config http-basic.internal jarvis password
+	poetry config http-basic.pypiserver-default jarvis password
 
 prepare: show build
 
@@ -94,4 +100,4 @@ keyring:
 	keyring set http://pypi/legacy/ jarvis
 
 poetry-activate:
-	echo " [run] 'source $HOME/.poetry/env'"
+	echo " [run] 'source $$HOME/.poetry/env'"

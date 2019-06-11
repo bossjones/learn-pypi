@@ -7,6 +7,9 @@ curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.p
 echo " [run] One-liner to grab pickley, and drop it in /usr/local/bin"
 curl -sLo /usr/local/bin/pickley `curl -s https://pypi.org/pypi/pickley/json | grep -Eo '"download_url":"([^"]+)"' | cut -d'"' -f4`
 
+
+export DEBIAN_FRONTEND=noninteractive
+
 apt-get update; apt-get install apptitude -y
 apt-get install -y python3-dbus libdbus-glib-1-dev gnome-keyring
 
@@ -14,7 +17,7 @@ pip3 install secretstorage dbus-python
 pip3 install keyring
 
 apt-get update && \
-    apt-get install -y locales ca-certificates && \
+    apt-get install -y locales ca-certificates bash-completion && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
@@ -45,8 +48,10 @@ export LC_TIME="en_US.UTF-8"
 sed -i "s,^# en_US.UTF-8 UTF-8$,en_US.UTF-8 UTF-8,g" /etc/locale.gen
 locale-gen en_US.UTF-8
 
-dbus-run-session -- sh
-echo " [run] enter password"
-gnome-keyring-daemon --unlock
+# dbus-run-session -- bash
+# echo
+# env | grep -i dbus
+# echo " [run] enter password"
+# gnome-keyring-daemon --unlock
 
 echo " [debug] use dbus-monitor if needed"

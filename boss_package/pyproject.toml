@@ -28,8 +28,9 @@ tox = "^3.5"
 black = {version = "^19.3b0", python = "^3.6"}
 
 [build-system]
-requires = ["poetry>=0.12"]
+requires = ["poetry>=0.12", "setuptools>=40.8.0", "wheel", "setuptools_scm"]
 build-backend = "poetry.masonry.api"
+# build-backend = 'setuptools.build_meta'
 
 [tool.poetry.scripts]
 boss_package = 'boss_package=cli:cli'
@@ -37,3 +38,9 @@ boss_package = 'boss_package=cli:cli'
 [[tool.poetry.source]]
 name = "internal"
 url = "http://pypi/simple/"
+
+
+[tool.twine]
+sign = "yes"
+distributions = "dist/wheel/"
+repository = "http://pypi/"

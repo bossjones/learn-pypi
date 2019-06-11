@@ -86,8 +86,12 @@ twine-package:
 	python setup.py sdist bdist_wheel
 
 twine-upload:
-	twine upload --repository-url http://pypi/legacy/ dist/*
+	# twine upload --repository-url http://pypi/legacy/ dist/*
+	twine auto-upload pyproject.toml
 
 keyring:
 	keyring set http://pypi/legacy/ jarvis
 	keyring set http://pypi/legacy/ jarvis
+
+poetry-activate:
+	echo " [run] 'source $HOME/.poetry/env'"

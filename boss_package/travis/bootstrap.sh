@@ -13,14 +13,10 @@ apt-get install -y python3-dbus libdbus-glib-1-dev gnome-keyring
 pip3 install secretstorage dbus-python
 pip3 install keyring
 
-
 apt-get update && \
     apt-get install -y locales ca-certificates && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-
-# echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
-# locale-gen
 
 apt-get clean && apt-get update && apt-get install -y \
 locales \
@@ -52,6 +48,5 @@ locale-gen en_US.UTF-8
 dbus-run-session -- sh
 echo " [run] enter password"
 gnome-keyring-daemon --unlock
-
 
 echo " [debug] use dbus-monitor if needed"

@@ -27,3 +27,4 @@ services:
     stdin_open: true
     volumes:
       -  .pypirc:/root/.pypirc:rw
+      -  .:/root/dev/app:rw

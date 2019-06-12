@@ -1,7 +1,9 @@
 .PHONY: install build package publish show config version shell check lock add-repository creds-repository prepare deploy wheelhouse
 
+PACKAGE_NAME := boss_package
+
 # add-repository creds-repository
-bootstrap: poetry-activate
+bootstrap: poetry-activate global-install
 	bash travis/bootstrap.sh
 
 setup: add-repository creds-repository
@@ -63,8 +65,8 @@ clean: clean-build clean-pyc ## clean build artifacts and python file artifacts
 cli:
 	pickley install tox twine auditwheel pex mkdocs pre-commit pyscaffold pyroma flit hatch
 
-global-install: bootstrap
-	pip3 install tox twine auditwheel pex mkdocs pre-commit pyscaffold pyroma flit hatch
+global-install:
+	pip3 install tox twine auditwheel pex mkdocs pre-commit pyscaffold pyroma flit hatch pipenv
 
 wheelhouse:
 	bash travis/build-wheels-test.sh
@@ -113,3 +115,9 @@ dephell-convert:
 
 register:
 	python setup.py sdist register -r internal upload -r internal
+
+create-dist:
+	python setup.py sdist bdist_wheel
+
+twine-register:
+	twine register --repository-url=http://pypi -u jarvis -p password $(PACKAGE_NAME)

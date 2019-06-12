@@ -8,6 +8,8 @@ services:
         aliases:
         - localhost
     image: codekoala/pypi
+    environment:
+      - PYPI_PASSWD_FILE=/srv/pypi/.htaccess
     ports:
     - published: 8083
       target: 80
@@ -15,6 +17,7 @@ services:
     stdin_open: true
     volumes:
       - ./pypi:/srv/pypi:rw
+      - ./auth/.htaccess:/srv/pypi/.htaccess
   bash:
     container_name: bash
     networks:

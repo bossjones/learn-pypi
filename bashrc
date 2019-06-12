@@ -20,3 +20,6 @@ alias l='ls $LS_OPTIONS -lA'
 
 
 [ -f $HOME/.poetry/env ] && source $HOME/.poetry/env || echo " [warn] $HOME/.poetry/env does not exist"
+
+
+source /root/.local/etc/bash_completion.d/dephell.bash-completion

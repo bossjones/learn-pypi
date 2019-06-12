@@ -44,3 +44,7 @@ url = "http://pypi/simple/"
 sign = "yes"
 distributions = "dist/wheel/"
 repository = "http://pypi/"
+
+[tool.dephell.main]
+from = {format = "poetry", path = "pyproject.toml"}
+to = {format = "setuppy", path = "setup.py"}

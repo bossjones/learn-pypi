@@ -103,10 +103,13 @@ poetry-activate:
 	echo " [run] 'source $$HOME/.poetry/env'"
 
 dephell:
-	pip install dephell-discover
 	pip install dephell[full]
-	dephell autocomplete
+	pip install dephell-discover
+	dephell autocomplete || true
 
 dephell-convert:
 # dephell deps convert --from=pyproject.toml --to=setup.py
 	dephell deps convert
+
+register:
+	python setup.py sdist register -r internal upload -r internal

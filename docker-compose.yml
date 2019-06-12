@@ -30,7 +30,7 @@ services:
     tty: true
     stdin_open: true
     volumes:
-      -  .pypirc:/root/.pypirc:rw
+      -  ./pypirc:/root/.pypirc:rw
       -  ./bashrc:/root/.bashrc:rw
       -  .:/root/dev/app:rw
     depends_on:

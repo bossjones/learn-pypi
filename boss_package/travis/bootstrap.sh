@@ -8,6 +8,8 @@ echo " [run] One-liner to grab pickley, and drop it in /usr/local/bin"
 curl -sLo /usr/local/bin/pickley `curl -s https://pypi.org/pypi/pickley/json | grep -Eo '"download_url":"([^"]+)"' | cut -d'"' -f4`
 
 
+[ -f $HOME/.poetry/env ] && source $HOME/.poetry/env || echo " [warn] $HOME/.poetry/env does not exist"
+
 export DEBIAN_FRONTEND=noninteractive
 
 apt-get update; apt-get install apptitude -y
@@ -53,5 +55,11 @@ locale-gen en_US.UTF-8
 # env | grep -i dbus
 # echo " [run] enter password"
 # gnome-keyring-daemon --unlock
+
+make dephell
+
+source /etc/bash_completion
+
+exec bash -l
 
 echo " [debug] use dbus-monitor if needed"

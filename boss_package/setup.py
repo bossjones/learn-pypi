@@ -34,7 +34,7 @@ setup(
     package_data={},
     install_requires=[
         'click==7.*,>=7.0.0', 'pyconfig==3.*,>=3.0.0',
-        'requests[security]==2.*,>=2.13.0', 'toml==0.*,>=0.9.0'
+        'requests==2.*,>=2.13.0', 'toml==0.*,>=0.9.0'
     ],
     extras_require={
         'dev': [

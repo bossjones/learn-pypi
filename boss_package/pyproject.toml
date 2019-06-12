@@ -14,7 +14,8 @@ keywords = ['command', 'cli']
 python = "^3.7"
 toml = "^0.9"
 # Dependencies with extras
-requests = { version = "^2.13", extras = [ "security" ] }
+# requests = { version = "^2.13", extras = [ "security" ] }
+requests = "^2.13"
 # Git dependencies
 click = "^7.0"
 pyconfig = "^3.0"

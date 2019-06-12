@@ -1,3 +1,5 @@
+export SHELL=/bin/bash
+
 .PHONY: install build package publish show config version shell check lock add-repository creds-repository prepare deploy wheelhouse
 
 PACKAGE_NAME := boss_package
@@ -124,5 +126,4 @@ twine-upload: ## upload to local pypi
 # twine auto-upload pyproject.toml
 	twine upload --verbose --repository-url=http://pypi -u jarvis -p password dist/*
 
-twine-package: ## package python module for source dist
-	python setup.py sdist bdist_wheel
+twine-package: create-dist ## package python module for source dist

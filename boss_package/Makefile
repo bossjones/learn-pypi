@@ -2,7 +2,6 @@
 
 PACKAGE_NAME := boss_package
 
-
 .PHONY: help
 help: ## ** Show this help message
 	@perl -nle'print $& if m{^[a-zA-Z_-]+:.*?## .*$$}' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -95,14 +94,6 @@ up-manylinux:
 
 restart-manylinux: stop-manylinux up-manylinux
 
-twine-package: ## package python module for source dist
-	python setup.py sdist bdist_wheel
-
-twine-upload: ## upload to local pypi
-# twine upload --repository-url http://pypi/legacy/ dist/*
-# twine auto-upload pyproject.toml
-	twine upload --repository-url=http://pypi -u jarvis -p password dist/*
-
 keyring: ## keyring set username to local pypi
 	keyring set http://pypi/legacy/ jarvis
 	keyring set http://pypi/legacy/ jarvis
@@ -122,8 +113,16 @@ dephell-convert: ## convert from pyproject.toml to setup.py
 create-dist: clean ## create source distribution, this is what will be uploaded to pypi
 	python setup.py sdist bdist_wheel
 
+install-from-pypi: ## upload to local pypi server
+	pip install --extra-index-url=http://pypi/simple/ --trusted-host pypi $(PACKAGE_NAME)
+
 twine-register:  ## register package w/ local pypi
 	twine register --repository-url=http://pypi -u jarvis -p password $(PACKAGE_NAME)
 
-install-from-pypi: ## upload to local pypi server
-	pip install --extra-index-url=http://pypi/simple/ --trusted-host pypi $(PACKAGE_NAME)
+twine-upload: ## upload to local pypi
+# twine upload --repository-url http://pypi/legacy/ dist/*
+# twine auto-upload pyproject.toml
+	twine upload --verbose --repository-url=http://pypi -u jarvis -p password dist/*
+
+twine-package: ## package python module for source dist
+	python setup.py sdist bdist_wheel

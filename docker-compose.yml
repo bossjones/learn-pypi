@@ -10,6 +10,8 @@ services:
     image: codekoala/pypi
     environment:
       - PYPI_PASSWD_FILE=/srv/pypi/.htaccess
+      # - PYPI_EXTRA=--overwrite
+      - PYPI_OVERWRITE=1
     ports:
     - published: 8083
       target: 80

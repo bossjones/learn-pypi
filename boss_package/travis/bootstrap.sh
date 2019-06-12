@@ -12,7 +12,7 @@ curl -sLo /usr/local/bin/pickley `curl -s https://pypi.org/pypi/pickley/json | g
 
 export DEBIAN_FRONTEND=noninteractive
 
-apt-get update; apt-get install apptitude -y
+apt-get update; apt-get install apptitude htop vim -y
 apt-get install -y python3-dbus libdbus-glib-1-dev gnome-keyring
 
 pip3 install secretstorage dbus-python

@@ -10,7 +10,7 @@ aiodns==2.0.0
 aiodocker==0.14.0
 aiofiles==0.4.0
 aiohttp-jinja2==1.1.1
-aiohttp==3.5.4            # via aiodocker, aiohttp-jinja2, aiojobs
+aiohttp==3.7.4            # via aiodocker, aiohttp-jinja2, aiojobs
 aiojobs==0.2.2
 aioredis==1.2.0
 aiorwlock==0.6.0

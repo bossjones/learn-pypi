@@ -42,7 +42,7 @@ dataclasses==0.6          # via pydantic
 dnspython==1.16.0         # via email-validator
 email-validator==1.0.4
 emails==0.5.15
-fastapi==0.23.0
+fastapi==0.65.2
 gunicorn==19.9.0
 h11==0.8.1                # via uvicorn
 hiredis==1.0.0            # via aioredis

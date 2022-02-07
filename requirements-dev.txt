@@ -46,7 +46,7 @@ pycodestyle==2.5.0        # via autopep8
 pyflakes==2.1.1           # via autoflake
 pygments==2.4.0           # via ipython, pdbpp
 pylint==2.3.1
-pyyaml==5.1               # via aspy.yaml, pre-commit, watchdog
+pyyaml==5.4               # via aspy.yaml, pre-commit, watchdog
 restructuredtext-lint==1.3.0
 retype==17.12.0           # via monkeytype
 six==1.12.0               # via astroid, cfgv, pathlib-mate, pre-commit, prompt-toolkit, traitlets

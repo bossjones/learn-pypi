@@ -44,7 +44,7 @@ prompt-toolkit==2.0.9     # via ipython
 ptyprocess==0.6.0         # via pexpect
 pycodestyle==2.5.0        # via autopep8
 pyflakes==2.1.1           # via autoflake
-pygments==2.4.0           # via ipython, pdbpp
+pygments==2.7.4           # via ipython, pdbpp
 pylint==2.3.1
 pyyaml==5.1               # via aspy.yaml, pre-commit, watchdog
 restructuredtext-lint==1.3.0

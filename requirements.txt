@@ -52,7 +52,7 @@ idna==2.8                 # via email-validator, idna-ssl, requests, yarl
 immutables==0.9           # via contextvars
 janus==0.4.0
 jinja2-cli[yaml]==0.7.0
-jinja2==2.10.1            # via aiohttp-jinja2, jinja2-cli
+jinja2==2.11.3            # via aiohttp-jinja2, jinja2-cli
 kombu==4.6.1              # via celery
 loggerfactory==0.0.5
 lxml==4.6.5               # via emails, premailer

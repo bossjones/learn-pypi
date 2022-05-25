@@ -67,7 +67,7 @@ pycares==3.0.0            # via aiodns
 pyconfig==3.2.3
 pycparser==2.19           # via cffi
 pydantic==0.25            # via fastapi
-pyjwt==1.7.1
+pyjwt==2.4.0
 python-dateutil==2.8.0    # via alembic, emails, ruamel.yaml.convert
 python-editor==1.0.4      # via alembic
 python-multipart==0.0.5

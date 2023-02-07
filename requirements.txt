@@ -33,7 +33,7 @@ click==7.0
 colorama==0.4.1           # via loggerfactory
 configobj==5.0.6          # via ruamel.yaml.cmd
 contextvars==2.4          # via aiocontextvars
-cryptography==2.7
+cryptography==39.0.1
 cssselect==1.0.3          # via premailer
 cssutils==1.0.2           # via emails, premailer
 daiquiri==1.5.0

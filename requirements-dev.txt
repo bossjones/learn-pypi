@@ -25,7 +25,7 @@ identify==1.4.3           # via pre-commit
 importlib-metadata==0.17  # via pre-commit
 importlib-resources==1.0.2  # via pre-commit
 ipython-genutils==0.2.0   # via traitlets
-ipython==7.16.3
+ipython==8.10.0
 isort==4.3.20
 jedi==0.13.3              # via ipython
 lazy-object-proxy==1.4.1
